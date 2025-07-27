@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutricity - Tu Bienestar Nutricional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #e91e63 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(233, 30, 99, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e91e63;
+            text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #e91e63;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(45deg, #e91e63, #f8bbd9);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            margin: 2rem 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #e91e63;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(233, 30, 99, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e91e63, #f8bbd9);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        .services {
+            padding: 4rem 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #e91e63;
+            margin-bottom: 3rem;
+            text-shadow: 1px 1px 4px rgba(233, 30, 99, 0.2);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #e91e63;
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #e91e63;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #e91e63;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .tips {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 4rem 0;
+            margin: 3rem 0;
+            border-radius: 20px;
+        }
+
+        .tips h2 {
+            text-align: center;
+            color: #e91e63;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+
+        .tips-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #e91e63;
+            transition: all 0.3s ease;
+        }
+
+        .tip:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .calculator h2 {
+            color: #e91e63;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .calc-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .calc-form input, .calc-form select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #f8bbd9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .calc-form input:focus, .calc-form select:focus {
+            outline: none;
+            border-color: #e91e63;
+        }
+
+        .calc-button {
+            background: linear-gradient(45deg, #e91e63, #f8bbd9);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calc-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fce4ec;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        footer {
+            background: rgba(233, 30, 99, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Nutricity</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#tips">Tips</a></li>
+                <li><a href="#calculadora">Calculadora</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero" id="inicio">
+            <h1>Nutricity</h1>
+            <p>Tu camino hacia una vida más saludable comienza aquí</p>
+            <a href="#servicios" class="cta-button">Descubre Más</a>
+        </section>
+
+        <section class="services" id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🥗</div>
+                    <h3>Planes Nutricionales</h3>
+                    <p>Diseñamos planes alimentarios personalizados según tus necesidades y objetivos específicos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💪</div>
+                    <h3>Nutrición Deportiva</h3>
+                    <p>Optimiza tu rendimiento deportivo con estrategias nutricionales especializadas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Nutrición Clínica</h3>
+                    <p>Tratamiento nutricional para condiciones médicas específicas con enfoque terapéutico.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Consultas Grupales</h3>
+                    <p>Sesiones educativas grupales para aprender sobre alimentación saludable en comunidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tips" id="tips">
+            <h2>Tips Nutricionales</h2>
+            <div class="tips-list">
+                <div class="tip">
+                    <h4>🍎 Come 5 porciones de frutas y verduras al día</h4>
+                    <p>Las frutas y verduras son ricas en vitaminas, minerales y antioxidantes esenciales.</p>
+                </div>
+                <div class="tip">
+                    <h4>💧 Mantente hidratado</h4>
+                    <p>Consume al menos 8 vasos de agua al día para mantener tu cuerpo funcionando óptimamente.</p>
+                </div>
+                <div class="tip">
+                    <h4>🌾 Elige granos integrales</h4>
+                    <p>Los granos integrales proporcionan más fibra y nutrientes que los refinados.</p>
+                </div>
+                <div class="tip">
+                    <h4>🐟 Incluye proteínas de calidad</h4>
+                    <p>Varía entre pescado, legumbres, huevos y carnes magras para obtener todos los aminoácidos.</p>
+                </div>
+                <div class="tip">
+                    <h4>⏰ Come con regularidad</h4>
+                    <p>Mantén horarios regulares de comida para estabilizar tu metabolismo.</p>
+                </div>
+                <div class="tip">
+                    <h4>🧘 Practica alimentación consciente</h4>
+                    <p>Come despacio y presta atención a las señales de hambre y saciedad de tu cuerpo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator" id="calculadora">
+            <h2>Calculadora de IMC</h2>
+            <p>Calcula tu Índice de Masa Corporal para conocer tu estado nutricional</p>
+            <div class="calc-form">
+                <input type="number" id="weight" placeholder="Peso (kg)" step="0.1">
+                <input type="number" id="height" placeholder="Altura (cm)" step="0.1">
+                <button class="calc-button" onclick="calculateBMI()">Calcular IMC</button>
+                <div id="bmi-result" class="result" style="display: none;"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="container">
+            <h3>Nutricity</h3>
+            <p>Tu bienestar nutricional es nuestra prioridad</p>
+            <p>📧 contacto@nutricity.com | 📞 +51 999 123 456</p>
+            <p>&copy; 2025 Nutricity. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
+            
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                alert('Por favor, ingresa valores válidos para peso y altura.');
+                return;
+            }
+            
+            const bmi = weight / (height * height);
+            const resultDiv = document.getElementById('bmi-result');
+            
+            let category = '';
+            let color = '';
+            
+            if (bmi < 18.5) {
+                category = 'Bajo peso';
+                color = '#2196F3';
+            } else if (bmi < 25) {
+                category = 'Peso normal';
+                color = '#4CAF50';
+            } else if (bmi < 30) {
+                category = 'Sobrepeso';
+                color = '#FF9800';
+            } else {
+                category = 'Obesidad';
+                color = '#F44336';
+            }
+            
+            resultDiv.innerHTML = `
+                <strong>Tu IMC es: ${bmi.toFixed(1)}</strong><br>
+                <span style="color: ${color};">Categoría: ${category}</span>
+            `;
+            resultDiv.style.display = 'block';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to service cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .tip').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
